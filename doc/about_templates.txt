@@ -1,0 +1,140 @@
+﻿*  Cloudfront
+    *  distribution_id
+    *  prefix
+    *  log_bucket_name
+    *  log_bucket_url
+    *  permission_type
+    *  is_logging_enabled
+    *  @is_presence_only
+
+*  Cloudtrail
+    * region
+    * trail_list > <array>
+    *  trail
+        *  name
+        *  s3_key_prefix
+        *  s3_bucket_name
+        *  is_multi_region_trail
+        *  home_region
+        *  trail_arn
+    *  log_permission
+    *  log_bucket_region
+    *  is_logs_enabled
+    *  is_presence_only
+
+*  Cloudwatch group
+    *  log_group
+        *  log_group_name
+        *  arn
+        *  creation_time
+        *  retention_in_days
+        *  metric_filter_count
+        *  stored_bytes
+    *  region
+    *  cloud_watch_client
+    *  log_group
+    *  fetch_log_streams(<cloud_watch_client>, <log_group>)
+    *  @presence_only
+
+*  Cloudwatch stream
+    *  log_stream
+        *  log_stream_name
+        *  arn
+        *  creation_time
+        *  first_event_timestamp
+        *  last_event_timestamp
+        *  last_ingestion_time
+        *  stored_bytes
+
+*  Dynamodb
+    *  region
+    *  is_streams_present
+    *  is_presence_only
+
+*  Dynamodb_stream
+    *  stream
+        *  stream_arn
+        *  table_name
+        *  stream_label
+
+*  ec2
+    *  flow_log_id
+    *  resource_id
+    *  traffic_type
+    *  log_group_name
+
+*  Elastic Load Balancer
+    *  load_balancer
+        *  load_balancer_arn
+        *  load_balancer_name
+        *  vpc_id
+    *  elb_attributes : <hash>
+        *  log_bucket
+        *  is_log_enabled
+        *  prefix
+    *  is_logging_enabled
+    *  @is_presence_only
+
+*  emr
+    *  cluster
+        *  id
+        *  name
+        *  log_uri
+    *  log_bucket_name
+    *  log_bucket_region
+    *  log_permission
+    *  is_logging_enabled
+    *  @is_presence_only
+
+*  ebs
+    *  application
+        *  application_name
+        *  version_label
+        *  source_bundle
+            *  s3_bucket
+            *  s3_key
+    *  log_bucket_name
+    *  log_bucket_region
+    *  log_permission
+    *  is_logging_enabled
+    *  @is_presence_only
+
+*  RDS
+    *  rds_instance
+        *  db_name
+        *  db_instance_status
+        *  endpoint
+            *  address
+    *  region
+    *  is_accessible
+    *  fetch_logs(<region>, <rds_instance.db_instance_identifier>)
+    *  is_logs_present
+    *  @is_presence_only
+
+*  RDS log stream
+    *  log_file
+        *  log_file_name
+        *  last_written
+        *  size
+    *  is_accessible
+
+*  S3
+    *  bucket
+        *  name
+    *  prefix
+    *  log_bucket_name
+    *  log_bucket_url
+    *  permission_type
+    *  is_logging_enabled
+    *  @is_presence_only
+
+*  VPC
+    *  vpc_id
+    *  flow_log
+        *  name
+        *  flow_log_id
+        *  resource_id
+        *  traffic_type
+        *  log_group_name
+    *  is_logging_enabled
+    *  @is_presence_only

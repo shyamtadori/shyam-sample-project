@@ -1,0 +1,38 @@
+access_key_id: <access_key_id>
+secret_access_key: <secret_access_key>
+logs: ['s3', 'rds', 'cloudtrail', 'cloudwatch', 'dynamodb', 'cloudfront', 'elb', 'ec2', 'emr', 'ebs', 'vpc']
+regions: []
+mode: silent
+output_format: json
+presence_only: false
+templates: 
+  json: 
+    cloudfront: ./lib/templates/json/cloud_front.erb
+    cloudtrail: ./lib/templates/json/cloud_trail.erb
+    cloudwatch_group: ./lib/templates/json/cloudwatch_group.erb
+    cloudwatch_stream: ./lib/templates/json/cloudwatch_stream.erb
+    dynamodb: ./lib/templates/json/dynamodb.erb
+    dynamodb_stream: ./lib/templates/json/dynamodb_stream.erb
+    ebs: ./lib/templates/json/ebs.erb
+    ec2: ./lib/templates/json/ec2.erb
+    vpc: ./lib/templates/json/vpc.erb
+    elb: ./lib/templates/json/elb.erb
+    emr: ./lib/templates/json/emr.erb
+    rds: ./lib/templates/json/rds.erb
+    rds_log: ./lib/templates/json/rds_log_stream.erb
+    s3: ./lib/templates/json/s3.erb
+  text:
+    cloudfront: ./lib/templates/text/cloud_front.text.erb
+    cloudtrail: ./lib/templates/text/cloud_trail.text.erb
+    cloudwatch_group: ./lib/templates/text/cloudwatch_group.text.erb
+    cloudwatch_stream: ./lib/templates/text/cloudwatch_stream.text.erb
+    dynamodb: ./lib/templates/text/dynamodb.text.erb
+    dynamodb_stream: ./lib/templates/text/dynamodb_stream.text.erb
+    ebs: ./lib/templates/text/ebs.text.erb
+    ec2: ./lib/templates/text/ec2.text.erb
+    vpc: ./lib/templates/text/vpc.text.erb
+    elb: ./lib/templates/text/elb.text.erb
+    emr: ./lib/templates/text/emr.text.erb
+    rds: ./lib/templates/text/rds.text.erb
+    rds_log: ./lib/templates/text/rds_log_stream.text.erb
+    s3: ./lib/templates/text/s3.text.erb

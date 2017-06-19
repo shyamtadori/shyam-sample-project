@@ -1,0 +1,22 @@
+<%if(@presence_only)%>
+  { 
+    "group_name": "<%= log_group.log_group_name %>",
+    "region": "<%= region %>",
+    "arn": "<%= log_group.arn %>",
+    "creation_time": "<%= log_group.creation_time %>",
+    "retention_in_days": "<%= log_group.retention_in_days %>",
+    "metric_filter_count": "<%= log_group.metric_filter_count %>",
+    "stored_bytes": "<%= log_group.stored_bytes %>"
+  }
+<%else%>
+  { 
+    "group_name": "<%= log_group.log_group_name %>",
+    "region": "<%= region %>",
+    "arn": "<%= log_group.arn %>",
+    "log_streams": <%= fetch_log_streams(cloud_watch_client, log_group) %>,
+    "creation_time": "<%= log_group.creation_time %>",
+    "retention_in_days": "<%= log_group.retention_in_days %>",
+    "metric_filter_count": "<%= log_group.metric_filter_count %>",
+    "stored_bytes": "<%= log_group.stored_bytes %>"
+  }
+<%end%>

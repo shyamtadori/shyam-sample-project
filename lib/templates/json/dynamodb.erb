@@ -1,0 +1,14 @@
+<%if(is_presence_only || !is_streams_present)%>
+  { 
+    "type": "dynamodb",
+    "region": "<%= region %>",
+    "is_streams_present": <%= is_streams_present %>
+  }
+<%else%>
+  { 
+    "type": "dynamodb",
+    "region": "<%= region %>",
+    "is_streams_present": <%= is_streams_present %>,
+    "streams": <%= fetch_stream_data(region) %>
+  }
+<%end%>

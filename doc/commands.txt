@@ -1,0 +1,7 @@
+Command to run the script :
+
+bin/run --config <configuration file path> --logs <log_type> --mode debug --output_format json --presence_only true
+
+Sample configuration file : data/configuration.yml
+
+for more information check "bin/run"

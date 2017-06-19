@@ -1,0 +1,21 @@
+<%if(is_presence_only || trails.trail_list.empty?)%>
+  {
+    "type": "cloudtrail",
+    "region": "<%= region %>",
+    "is_logs_enabled": <%= is_logs_enabled %>
+  }
+<%else%>
+  {
+    "type": "cloudtrail",
+    "region": "<%= region %>",
+    "is_logs_enabled": <%= is_logs_enabled %>,
+    "trail_name": "<%= trail.name %>",
+    "s3_key_prefix": "<%= trail.s3_key_prefix %>",
+    "log_location": "<%= trail.s3_bucket_name %>",
+    "is_multi_region_trail": "<%= trail.is_multi_region_trail %>",
+    "home_region": "<%= trail.home_region %>",
+    "trail_arn": "<%= trail.trail_arn %>",
+    "log_permission": "<%= log_permission %>",
+    "log_bucket_region": "<%= log_bucket_region %>"
+  }
+<%end%>

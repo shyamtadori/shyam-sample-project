@@ -1,0 +1,19 @@
+<%if(is_logging_enabled && !@is_presence_only)%>
+  { 
+    "type": "emr",
+    "cluster_id": "<%= cluster.id %>",
+    "cluster_name": "<%= cluster.name %>",
+    "is_logging_enabled": <%= is_logging_enabled %>,
+    "log_uri": "<%= cluster.log_uri %>",
+    "log_bucket_name": "<%= log_bucket_name %>",
+    "log_bucket_region": "<%= log_bucket_region %>",
+    "log_permission": "<%= log_permission %>"
+  }
+<%else%>
+  { 
+    "type": "emr",
+    "cluster_id": "<%= cluster.id %>",
+    "cluster_name": "<%= cluster.name %>",
+    "is_logging_enabled": <%= is_logging_enabled %>
+  }  
+<%end%>

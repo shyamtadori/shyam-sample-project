@@ -1,0 +1,13 @@
+<%if(@is_presence_only || !is_logging_enabled)%>
+  type: cloudfront
+  distribution_id: <%= distribution_id %>
+  is_logging_enabled: <%= is_logging_enabled %>
+<%else%>
+  type: cloudfront
+  distribution_id: <%= distribution_id %>
+  is_logging_enabled: <%= is_logging_enabled %>
+  prefix: <%= prefix %>
+  log_location: <%= log_bucket_name %>
+  log_bucket_url: <%= log_bucket_url %>
+  permission: <%= permission_type %>
+<%end%>

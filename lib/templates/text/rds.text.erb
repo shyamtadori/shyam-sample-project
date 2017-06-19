@@ -1,0 +1,16 @@
+<%if(@is_presence_only || !is_logs_present)%>
+  type: rds
+  region: <%= region %>
+  is_logs_present: <%= is_logs_present %>
+  db_name: <%= rds_instance.db_name %>
+  db_status: <%= rds_instance.db_instance_status %>
+  db_endpoint: <%= rds_instance.endpoint.address %>
+<%else%>
+  type: rds
+  region: <%= region %>
+  is_logs_present: <%= is_logs_present %>
+  db_name: <%= rds_instance.db_name %>
+  db_status: <%= rds_instance.db_instance_status %>
+  db_endpoint: <%= rds_instance.endpoint.address %>
+  log_files: <%= fetch_logs(region, rds_instance.db_instance_identifier) %>
+<%end%>

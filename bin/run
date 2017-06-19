@@ -1,0 +1,67 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'bundler/setup'
+require 'aws-sdk'
+require 'optparse'
+start_file_path = File.expand_path('../../lib/start.rb', __FILE__)
+require start_file_path
+
+options = { 'config_file_path' => nil, 'logs' => nil, 'regions' => nil, 'mode' => nil }
+
+parser = OptionParser.new do |opts|
+  opts.banner = 'Usage: bin/run [options]'
+  opts.on('-h', '--help', 'Displays Help') do
+    puts opts
+    exit
+  end
+
+  opts.on('-config', '--config config', 'configuration file path') do |config_file_path|
+    options['config_file_path'] = config_file_path
+  end
+
+  opts.on('-logs', '--logs logs', 'Required Logs (comma seperated values)') do |logs|
+    options['logs'] = logs
+  end
+
+  opts.on('-regions', '--regions regions', 'Regions (comma seperated values)') do |regions|
+    options['regions'] = regions
+  end
+
+  opts.on('-mode', '--mode mode', 'Mode (silent or verbose or debug)') do |mode|
+    options['mode'] = mode
+  end
+
+  opts.on('-output_format', '--output_format output_format', 'Output format (json or text)') do |output_format|
+    options['output_format'] = output_format
+  end
+
+  opts.on('-presence_only', '--presence_only presence_only', 'give details about presence of logs (true or false)') do |presence_only|
+    if presence_only.to_s == 'true'
+      options['presence_only'] = true
+    else
+      options['presence_only'] = false
+    end
+  end
+
+end
+parser.parse!
+
+configuration_file_path = options['config_file_path']
+if !configuration_file_path.to_s.strip.empty?
+  config = Config.new(configuration_file_path)
+  app_config = config.app_config
+  app_config['logs'] = options['logs'].split(',').uniq if options['logs']
+  app_config['regions'] = options['regions'].split(',').uniq if options['regions']
+  app_config['mode'] = options['mode'] if options['mode']
+  app_config['output_format'] = options['output_format'] if options['output_format']
+  app_config['presence_only'] = options['presence_only'] if options['presence_only']
+
+  begin
+    job = Log.new(app_config)
+    job.start
+  rescue StandardError => e
+    puts e
+  end
+else
+  puts 'Pass configuration file path as argument. Ex: bin/run --config <file_path>'
+end

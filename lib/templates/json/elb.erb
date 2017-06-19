@@ -1,0 +1,19 @@
+<%if(is_logging_enabled && !@is_presence_only)%>
+  { 
+    "type": "elb",
+    "load_balancer_arn": "<%= load_balancer.load_balancer_arn %>",
+    "load_balancer_name": "<%= load_balancer.load_balancer_name %>",
+    "vpc_id": "<%= load_balancer.vpc_id %>",
+    "log_bucket": "<%= elb_attributes[:log_bucket] %>",
+    "is_log_enabled": <%= is_logging_enabled %>,
+    "prefix": "<%= elb_attributes[:prefix] %>"
+  }
+<%else%>
+  { 
+    "type": "elb",
+    "load_balancer_arn": "<%= load_balancer.load_balancer_arn %>",
+    "load_balancer_name": "<%= load_balancer.load_balancer_name %>",
+    "vpc_id": "<%= load_balancer.vpc_id %>",
+    "is_log_enabled": <%= is_logging_enabled %>
+  }
+<%end%>

@@ -1,0 +1,15 @@
+<%if(@is_presence_only || !is_logging_enabled)%>
+  {
+    "type": "s3 logs of <%= bucket.name %>",
+    "is_logging_enabled": <%= is_logging_enabled %>
+  }
+<%else%>
+  {
+    "type": "s3 logs of <%= bucket.name %>",
+    "is_logging_enabled": <%= is_logging_enabled %>,
+    "prefix": "<%= prefix %>",
+    "log_bucket_name": "<%= log_bucket_name %>",
+    "log_bucket_url": "<%= log_bucket_url %>",
+    "log_permission": "<%= log_permission %>"
+  }
+<%end%>

@@ -1,0 +1,15 @@
+<%if(@is_presence_only)%>
+  type: ebs
+  application_name: <%= application.application_name %>
+  application_version_lebel: <%= application.version_label %>
+  is_logging_enabled: <%= is_logging_enabled %>
+<%else%>
+  type: ebs
+  application_name: <%= application.application_name %>
+  application_version_lebel: <%= application.version_label %>
+  is_logging_enabled: <%= is_logging_enabled %>
+  log_bucket_name: <%= application.source_bundle.s3_bucket %>
+  log_bucket_region: <%= log_bucket_region %>
+  log_permission: <%= log_permission %>
+  s3_key: <%= application.source_bundle.s3_key %>
+<%end%>
